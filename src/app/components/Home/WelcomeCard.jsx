@@ -37,7 +37,7 @@ const WelcomeCard = () => {
       <article className='card'>
         <div className='card-over'>
           <h1 className='card-over__title'>
-            {greeting}, <span>{user ? user.name : 'Denis'}</span>
+            {greeting}, <span>{user ? user.name : 'visitante'}</span>
           </h1>
           <p className='card__para'>{quote}</p>
         </div>

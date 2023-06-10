@@ -37,7 +37,7 @@ const ArticlesView = ({ articles, language, lang, keyword }) => {
             {articles.length > 0 ? (
               <h2>
                 Mostrando resultados en {lang === 'es' ? 'Español' : 'Inglés'}{' '}
-                {keyword && 'de' + keyword}
+                {keyword && 'de ' + keyword}
               </h2>
             ) : (
               <h2>No encontraste lo que buscabas? Intenta ser más específico</h2>

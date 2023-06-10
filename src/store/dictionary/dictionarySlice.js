@@ -16,7 +16,16 @@ export const dictionarySlice = createSlice({
     setResults(state, { payload }) {
       state.result = payload;
     },
+    setHomeResults(state, { payload }) {
+      state.homeResults = [];
+      // push new places when this not exists in the storage
+      payload.forEach((result) => {
+        if (!state.homeResults.includes(result.word)) {
+          state.homeResults.push(result);
+        }
+      });
+    },
   },
 });
 
-export const { setIsLoading, setResults } = dictionarySlice.actions;
+export const { setIsLoading, setResults, setHomeResults } = dictionarySlice.actions;

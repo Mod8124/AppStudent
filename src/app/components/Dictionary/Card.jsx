@@ -1,9 +1,10 @@
 import { GiSpeaker } from 'react-icons/gi';
+import { wordsToSpanish } from '../../../utils/RandomWords';
 
 let AudioP = null;
 
 export const Card = ({ result, home }) => {
-  const word = result[0];
+  const word = result;
 
   const findPronunciation = () => {
     let IPA = null;
@@ -35,26 +36,36 @@ export const Card = ({ result, home }) => {
 
   return (
     <article className={home ? 'cardDictionary cardDictionary--home' : 'cardDictionary'}>
-      <h3 className='cardDictionary__title'>{word.word}</h3>
+      <h3 className='cardDictionary__title'>
+        {word.word}
+
+        {home && ' ' && <span>({wordsToSpanish[`${word.word}`]})</span>}
+      </h3>
       <div className='cardDictionary__speakerContainer'>
         <GiSpeaker className='cardDictionary__speaker' onClick={start} />
         <p className='cardDictionary__pronunciation'>{findPronunciation()}</p>
       </div>
       <h4 className='cardDictionary__titleMeaning'>Significado</h4>
-      {word.meanings.map((meaning) => (
-        <div className='cardDictionary__meanings' key={meaning.partOfSpeech}>
-          <h4 className='cardDictionary__type'>{meaning.partOfSpeech}</h4>
-          {meaning.definitions.map((definition, index) => {
-            if (index > 2) return;
-            return (
-              <div className='cardDictionary__meaning' key={(definition, index)}>
-                {' '}
-                <span className='cardDictionary__point'>*</span> {definition.definition}
-              </div>
-            );
-          })}
-        </div>
-      ))}
+      {word.meanings.map((meaning, index) => {
+        if (index > 1) return;
+        return (
+          <div
+            className='cardDictionary__meanings'
+            key={meaning.partOfSpeech + 'partOfSpeech' + 'index'}
+          >
+            <h4 className='cardDictionary__type'>{meaning.partOfSpeech}</h4>
+            {meaning.definitions.map((definition, index) => {
+              if ((index > 3 && !home) || (index > 0 && home)) return;
+              return (
+                <div className='cardDictionary__meaning' key={definition + 'definition' + index}>
+                  {' '}
+                  <span className='cardDictionary__point'>*</span> {definition.definition}
+                </div>
+              );
+            })}
+          </div>
+        );
+      })}
     </article>
   );
 };

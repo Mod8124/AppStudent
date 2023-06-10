@@ -8,16 +8,16 @@ export const Principal = () => {
       <Header />
       <div className='principal wrapper'>
         <div className='principal__texts'>
-          <h2 className='principal__title'>APP STUDENT</h2>
+          <h2 className='principal__title'>AppStudent</h2>
           <p className='principal__paragraph'>
             Mantén tus tareas organizadas y completas con nuestra aplicación revolucionaria! Con
             nuestra aplicación, puedes crear listas de tareas personalizadas, establecer
             recordatorios, priorizar tareas y mucho más.{' '}
           </p>
-          <Button href='/auth/login'>EMPEZAR AHORA</Button>
+          <Button href='/app'>EMPEZAR A EXPLORAR</Button>
         </div>
         <picture className='principal__illustration'>
-          <img src='/assets/svgs/principal.svg' alt='app students' />
+          <img src='/assets/svgs/principal_two.svg' alt='app students' />
         </picture>
       </div>
     </section>

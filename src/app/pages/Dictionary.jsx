@@ -40,7 +40,7 @@ export const DictionaryPage = () => {
           <AiOutlineSearch /> <h3>Buscandoo...</h3>
         </div>
       )}
-      {!isLoading && result.length > 0 && <Card result={result} />}
+      {!isLoading && result.length > 0 && <Card result={result[0]} />}
       {/* 
       <Card /> */}
     </section>
