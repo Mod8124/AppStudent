@@ -2,10 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { urlArticle } from '../../../store/search/thunks';
 import { BsBookmark, BsFillBookmarkFill } from 'react-icons/bs';
-import {
-  removeArticle,
-  saveArticle,
-} from '../../../store/articles/articleSlice';
+import { removeArticle, saveArticle } from '../../../store/articles/articleSlice';
 import { toast } from 'react-hot-toast';
 import PropTypes from 'prop-types';
 
@@ -21,11 +18,7 @@ const ArticleCard = ({ art }) => {
 
   const isAdded = savedArts.find((art) => art.pageid === artData.pageid);
 
-  const icon = isAdded ? (
-    <BsFillBookmarkFill className='added' />
-  ) : (
-    <BsBookmark />
-  );
+  const icon = isAdded ? <BsFillBookmarkFill className='added' /> : <BsBookmark />;
 
   const handleDelete = () => {
     dispatch(removeArticle(isAdded));
@@ -50,30 +43,21 @@ const ArticleCard = ({ art }) => {
   return (
     <article key={art.pageid} className='articles__item'>
       <div className='articles__item-header'>
-        <a
-          href={urlArticle(art.pageid)}
-          target='_blank'
-          rel='noreferrer noopener'
-        >
-          <h2>{art.title}</h2>
+        <a href={urlArticle(art.pageid)} target='_blank' rel='noreferrer noopener'>
+          <h2>{art.title} - Wikipedia</h2>
         </a>
-        <button
-          className='save--btn'
-          onClick={isAdded ? handleDelete : handleAdd}
-        >
+        <button className='save--btn' onClick={isAdded ? handleDelete : handleAdd}>
           <span role='img' aria-label='Article'>
             {icon}
           </span>
         </button>
       </div>
-      <p>
-        <span
-          className='articles__item-snippet'
-          dangerouslySetInnerHTML={{
-            __html: art.snippet,
-          }}
-        ></span>
-      </p>
+      <p
+        className='articles__item-snippet'
+        dangerouslySetInnerHTML={{
+          __html: art.snippet,
+        }}
+      ></p>
     </article>
   );
 };

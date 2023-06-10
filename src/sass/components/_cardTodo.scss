@@ -1,0 +1,44 @@
+.cardTodo {
+  background-color: $background;
+  border-bottom-right-radius: 20px;
+  border-left: 3px solid $main;
+  display: grid;
+  grid-template-columns: 10% 30% 30% 40%;
+  padding: 1em;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  align-items: center;
+
+  &:hover {
+    svg {
+      opacity: 1;
+    }
+  }
+
+  svg {
+    fill: $button;
+    font-size: 2em;
+    right: 2vh;
+    top: 20%;
+    position: absolute;
+    opacity: 0;
+    transition: all 0.5s;
+  }
+
+  &--active {
+    border-left: 3px solid $button;
+  }
+
+  &__circle {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1px solid $main;
+    background-color: $main;
+
+    &--active {
+      background-color: $button;
+    }
+  }
+}

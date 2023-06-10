@@ -1,5 +1,4 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { LandingPage } from '../app/pages/LandingPage';
 import { AppRoutes } from '../app/routes/AppRoutes';
 import { AuthRoutes } from '../auth/routes/AuthRoutes';
 import { CheckingAuthView } from '../auth/view/CheckingAuthView';
@@ -22,8 +21,7 @@ export const AppRouter = () => {
           element={
             <PublicRoutes>
               <Routes>
-                <Route path='/' element={<LandingPage />} />
-                <Route path='auth/*' element={<AuthRoutes />} />
+                <Route path='/*' element={<AuthRoutes />} />
               </Routes>
             </PublicRoutes>
           }

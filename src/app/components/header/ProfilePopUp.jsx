@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { BsBoxArrowLeft, BsFillFilePersonFill } from 'react-icons/bs';
@@ -6,7 +7,7 @@ import { onLogout } from '../../../store/auth/authSlice';
 
 const ProfilePopUp = ({ handleClick, refProfile }) => {
   const dispatch = useDispatch();
-  const { name, username, image } = useSelector((state) => state.auth.user);
+  // const { name, username, image } = useSelector((state) => state.auth.user);
 
   const handleLogout = () => {
     localStorage.removeItem('token');
@@ -16,10 +17,14 @@ const ProfilePopUp = ({ handleClick, refProfile }) => {
   return (
     <div ref={refProfile} className='profile-pop'>
       <div className='profile-pop__header'>
-        <img className='profile-pop__img' src={image} alt={name} />
+        <img
+          className='profile-pop__img'
+          src="https://i.pinimg.com/564x/de/d1/ec/ded1eca7168a26953d81b1328a816b92.jpg'"
+          alt={name}
+        />
         <div className='profile-pop__user-info'>
-          <h2 className='profile-pop__name'>{name}</h2>
-          <h2 className='profile-pop__user'>@{username}</h2>
+          <h2 className='profile-pop__name'>denis</h2>
+          <h2 className='profile-pop__user'>@Mod812</h2>
         </div>
       </div>
       <div className='profile-pop__body'>

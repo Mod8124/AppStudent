@@ -9,7 +9,7 @@ body {
   // Custom scrollbar for Chrome and Safari
   &::-webkit-scrollbar {
     width: 12px;
-    background: $background;
+    background: $stroke;
   }
   &::-webkit-scrollbar-thumb {
     border-radius: 15px;

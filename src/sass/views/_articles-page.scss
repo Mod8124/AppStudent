@@ -1,6 +1,21 @@
 .articles {
-  min-height: 100vh;
   background: $stroke;
+
+  &__views {
+    padding-bottom: 1em;
+  }
+
+  &__view {
+    background-color: transparent;
+    font-size: 1.3em;
+    color: $paragraph;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+  }
+
+  &__view--active {
+    color: $button;
+  }
 
   h2 {
     margin-bottom: 2rem;
@@ -30,10 +45,11 @@
     padding-bottom: 6rem;
 
     .articles__item {
+      border-left: 4px solid $button;
       padding: 1rem 3rem 1rem 1rem;
       width: 100%;
       background: $background;
-      border-radius: 10px;
+      border-bottom-right-radius: 20px;
       &-header {
         display: flex;
         justify-content: space-between;
@@ -59,6 +75,7 @@
       }
       p {
         width: 100%;
+        max-width: 900px;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;

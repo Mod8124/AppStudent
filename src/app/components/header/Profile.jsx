@@ -1,9 +1,9 @@
 import React, { useEffect, useRef } from 'react';
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 import ProfilePopUp from './ProfilePopUp';
 
 const Profile = () => {
-  const { image } = useSelector((state) => state.auth.user);
+  // const { image } = useSelector((state) => state.auth.user);
   const handlePopStopPropagation = (e) => e.stopPropagation();
   const refProfile = useRef();
   const refProfileImg = useRef();
@@ -32,7 +32,7 @@ const Profile = () => {
         <img
           ref={refProfileImg}
           className='profile__img'
-          src={image}
+          src='https://i.pinimg.com/564x/de/d1/ec/ded1eca7168a26953d81b1328a816b92.jpg'
           alt='rodrigo'
           onClick={handleClick}
         />

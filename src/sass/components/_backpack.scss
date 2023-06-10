@@ -4,7 +4,7 @@
   right: 1rem;
   z-index: 1;
   svg {
-    font-size: 2rem;
+    font-size: 2.2rem;
     fill: #d0d6f9;
   }
   &__content {
@@ -13,8 +13,8 @@
   &__icon {
     cursor: pointer;
     background-color: #d0d6f9;
-    width: 3rem;
-    height: 3rem;
+    width: 3.6rem;
+    height: 3.6rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -72,9 +72,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: $stroke;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
-      rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    background-color: $button-text;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
       rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
     &-tooltip {
       position: absolute;
@@ -96,7 +95,7 @@
     }
 
     svg {
-      font-size: 1.2rem;
+      font-size: 1.6rem;
     }
     &:hover {
       svg {
@@ -104,7 +103,7 @@
       }
     }
     &.backpack__item--clock {
-      transform: translate(-1.5rem, -5.3rem);
+      transform: translate(-1.9rem, -6rem);
       .backpack__item-tooltip {
         transform: translateX(-5rem);
       }
@@ -113,10 +112,10 @@
       }
     }
     &.backpack__item--calendar {
-      transform: translate(-3.2rem, -3.5rem);
+      transform: translate(-4rem, -4rem);
     }
     &.backpack__item--calculator {
-      transform: translate(-3.2rem, -1.2rem);
+      transform: translate(-4rem, -1.2rem);
     }
   }
   @include responsive-max(lg) {

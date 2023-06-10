@@ -1,13 +1,11 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 // icons
-import { BsBook, BsListUl, BsSearch, BsHouse, BsFileEarmarkText } from 'react-icons/bs';
+import { BsBook, BsListUl, BsSearch, BsHouse } from 'react-icons/bs';
 import { useScrollDown } from '../../../hooks/useScrollDown';
-import { useDispatch } from 'react-redux';
-import { readChoress, viewCompleteChores } from '../../../store/chores/thunks';
+
 const Aside = () => {
   const scrollDirection = useScrollDown();
-  const dispatch=useDispatch();
   return (
     <aside className={`aside ${scrollDirection === 'down' ? 'aside--down' : 'aside--up'}`}>
       <div className='aside__links'>
@@ -20,22 +18,8 @@ const Aside = () => {
           <BsHouse />
           Inicio
         </NavLink>
-
         <NavLink
-          to='/app/courses'
-          className={({ isActive }) =>
-            isActive ? 'aside__link aside__link--active' : 'aside__link'
-          }
-        >
-          <BsBook />
-          Cursos
-        </NavLink>
-        <NavLink
-          onClick={()=>{
-            dispatch(readChoress());
-            dispatch(viewCompleteChores());
-          }}
-          to='/app/chores'
+          to='/app/todo'
           className={({ isActive }) =>
             isActive ? 'aside__link aside__link--active' : 'aside__link'
           }
@@ -53,13 +37,13 @@ const Aside = () => {
           Buscar
         </NavLink>
         <NavLink
-          to='/app/articles'
+          to='/app/dictionary'
           className={({ isActive }) =>
             isActive ? 'aside__link aside__link--active' : 'aside__link'
           }
         >
-          <BsFileEarmarkText />
-          Artículos
+          <BsBook />
+          Diccionario
         </NavLink>
       </div>
     </aside>

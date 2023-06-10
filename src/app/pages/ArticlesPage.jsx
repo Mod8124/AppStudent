@@ -14,6 +14,7 @@ const ArticlesPage = () => {
   const { q } = queryString.parse(search);
 
   useEffect(() => {
+    console.log(q);
     dispatch(getSearch(q || keyword, lang));
   }, [q, lang]);
 
@@ -27,7 +28,7 @@ const ArticlesPage = () => {
         <NoArticlesFound />
       ) : (
         (q || keyword) && (
-          <ArticlesView language={handleLanguage} articles={articles} />
+          <ArticlesView keyword={q} lang={lang} language={handleLanguage} articles={articles} />
         )
       )}
     </div>
