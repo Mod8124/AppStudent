@@ -2,7 +2,7 @@ import { GiSpeaker } from 'react-icons/gi';
 
 let AudioP = null;
 
-export const Card = ({ result }) => {
+export const Card = ({ result, home }) => {
   const word = result[0];
 
   const findPronunciation = () => {
@@ -33,22 +33,28 @@ export const Card = ({ result }) => {
     audio.play();
   };
 
-  console.log(word);
   return (
-    <article>
-      <h3>{word.word}</h3>
-      <p>{findPronunciation()}</p>
-      <h4>Significado</h4>
+    <article className={home ? 'cardDictionary cardDictionary--home' : 'cardDictionary'}>
+      <h3 className='cardDictionary__title'>{word.word}</h3>
+      <div className='cardDictionary__speakerContainer'>
+        <GiSpeaker className='cardDictionary__speaker' onClick={start} />
+        <p className='cardDictionary__pronunciation'>{findPronunciation()}</p>
+      </div>
+      <h4 className='cardDictionary__titleMeaning'>Significado</h4>
       {word.meanings.map((meaning) => (
-        <div key={meaning.partOfSpeech}>
-          <h4>{meaning.partOfSpeech}</h4>
+        <div className='cardDictionary__meanings' key={meaning.partOfSpeech}>
+          <h4 className='cardDictionary__type'>{meaning.partOfSpeech}</h4>
           {meaning.definitions.map((definition, index) => {
             if (index > 2) return;
-            return <div key={(definition, index)}>* {definition.definition}</div>;
+            return (
+              <div className='cardDictionary__meaning' key={(definition, index)}>
+                {' '}
+                <span className='cardDictionary__point'>*</span> {definition.definition}
+              </div>
+            );
           })}
         </div>
       ))}
-      <GiSpeaker onClick={start} />
     </article>
   );
 };

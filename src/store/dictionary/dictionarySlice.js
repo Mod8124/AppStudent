@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const base = {
   isLoading: false,
   result: [],
+  homeResults: [],
 };
 
 export const dictionarySlice = createSlice({

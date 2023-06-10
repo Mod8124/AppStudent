@@ -10,15 +10,15 @@
   &__para {
     color: $paragraph;
     padding-bottom: 0.6em;
-    max-width: 840px;
     line-height: 28px;
   }
 
   &__container {
     position: relative;
-    max-width: 800px;
+    max-width: 1060px;
     background-color: $background;
     border-radius: 6px;
+    margin-bottom: 20px;
 
     input {
       width: 100%;
@@ -40,5 +40,55 @@
     right: 2%;
     top: 10%;
     font-size: 1.7em;
+  }
+}
+
+.cardDictionary {
+  position: relative;
+  max-width: 1060px;
+  padding: 1em;
+
+  &__speaker {
+    font-size: 1.6em;
+    cursor: pointer;
+  }
+
+  &__speakerContainer {
+    display: flex;
+    align-items: center;
+    color: $button;
+    column-gap: 0.1em;
+    padding-bottom: 0.6em;
+  }
+
+  &__title {
+    color: $heading;
+    text-transform: capitalize;
+    font-size: 1.4em;
+    padding-bottom: 0.4em;
+  }
+
+  &__pronunciation {
+    font-size: 1.1em;
+  }
+
+  &__type {
+    color: white;
+    text-transform: capitalize;
+  }
+
+  &__titleMeaning {
+    color: $heading;
+    padding-bottom: 0.8em;
+  }
+
+  &__meaning {
+    padding-left: 1em;
+    line-height: 28px;
+  }
+
+  &__point {
+    color: $button;
+    padding-right: 0.4em;
   }
 }
