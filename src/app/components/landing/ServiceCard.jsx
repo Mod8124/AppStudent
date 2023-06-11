@@ -6,7 +6,7 @@ export const ServiceCard = ({ title, text, buttonText }) => {
     <div className='service-card'>
       <h3 className='service-card__title'>{title}</h3>
       <p className='service-card__paragraph'>{text}</p>
-      <Button href='/auth/login' type='primary'>
+      <Button href='/app' type='primary'>
         {buttonText}
       </Button>
     </div>

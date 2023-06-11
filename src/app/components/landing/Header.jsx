@@ -9,7 +9,7 @@ export const Header = () => {
     <header>
       <nav className='nav'>
         <h1 className='nav__logo'>
-          App <span>Students</span>
+          App<span>Student</span>
         </h1>
 
         <HambugerButton />

@@ -1,0 +1,68 @@
+.cardTodo {
+  background-color: $background;
+  border-bottom-right-radius: 20px;
+  border-left: 3px solid $main;
+  display: grid;
+  grid-template-columns: 10% 30% 30%;
+  justify-content: space-between;
+  padding: 0.6em;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  align-items: center;
+
+  &:hover {
+    svg {
+      opacity: 1;
+    }
+  }
+
+  svg {
+    fill: $button;
+    font-size: 2em;
+    right: 2vh;
+    top: 50%;
+    position: absolute;
+    opacity: 0;
+    transition: all 0.5s;
+  }
+
+  &--active {
+    border-left: 3px solid $button;
+  }
+
+  &__date {
+    grid-column: 1 / span 3;
+    padding-top: 0.4em;
+    padding-left: 0.4em;
+  }
+
+  &__circle {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1px solid $main;
+    background-color: $main;
+
+    &--active {
+      background-color: $button;
+    }
+  }
+}
+
+@media screen and (min-width: 640px) {
+  .cardTodo {
+    padding: 1em;
+    grid-template-columns: 10% 30% 30% 40%;
+
+    svg {
+      top: 20%;
+    }
+
+    &__date {
+      grid-column: initial;
+      padding-top: 0;
+      padding-left: 0;
+    }
+  }
+}

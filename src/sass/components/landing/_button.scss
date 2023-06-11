@@ -8,12 +8,13 @@
 .landing-button-primary {
   background-color: $button;
   color: $button-text;
+  text-align: center;
   &:hover {
     background-color: darken($color: $button, $amount: 7);
   }
 }
 .landing-button-secondary {
-  outline: 2px solid $paragraph;
+  outline: 2px solid $button;
   color: $button;
   &:hover {
     background-color: darken($color: $button-text, $amount: 7);

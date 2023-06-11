@@ -1,11 +1,11 @@
 import WelcomeCard from '../components/Home/WelcomeCard';
-import CourseModule from '../components/Home/CourseModule';
+import { Word } from '../components/Home/Word';
 
 export const HomePage = () => {
   return (
-    <div className='home'>
+    <section className='home'>
       <WelcomeCard />
-      <CourseModule />
-    </div>
+      <Word />
+    </section>
   );
 };

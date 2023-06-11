@@ -1,21 +1,14 @@
-html {
-  // Custom scrollbar for Firefox
-  overflow-y: scroll;
-  scrollbar-color: $main $background;
-  scrollbar-width: thin;
-}
 body {
   background: initial;
   // Custom scrollbar for Chrome and Safari
   &::-webkit-scrollbar {
-    width: 12px;
-    background: $background;
+    width: 13px;
+    background: $stroke;
   }
   &::-webkit-scrollbar-thumb {
     border-radius: 15px;
     background: $main;
-    border-right: 2px solid $background;
-    border-left: 2px solid $background;
+    border: 2px solid $background;
   }
 }
 .container {
@@ -26,7 +19,7 @@ body {
 }
 
 .principal {
-  background: $background;
+  background: transparent;
 }
 
 .seccion1 {
@@ -64,7 +57,7 @@ body {
 }
 
 .bg-primary {
-  background-color: $background;
+  background-color: $stroke;
 }
 .bg-secondary {
   background-color: $paragraph;

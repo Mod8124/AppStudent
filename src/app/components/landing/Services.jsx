@@ -4,7 +4,7 @@ import services from './data/services.json';
 
 export const Services = () => {
   return (
-    <div className='container'>
+    <div className='container' id='services'>
       <div className='services'>
         <div className='services__content'>
           <div className='services__head'>

@@ -1,5 +1,3 @@
-import React from 'react';
-import { Comments } from '../components/landing/Comments';
 import { Footer } from '../components/landing/Footer';
 import { Principal } from '../components/landing/Principal';
 import { Services } from '../components/landing/Services';
@@ -17,10 +15,6 @@ export const LandingPage = () => {
 
       <section className='bg-primary'>
         <Services />
-      </section>
-
-      <section className='bg-secondary'>
-        <Comments />
       </section>
       <Footer />
     </main>

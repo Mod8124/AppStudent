@@ -14,7 +14,6 @@
 @import './sass/layout/authLayout';
 @import './sass/components/backpack';
 @import './sass/components/modal';
-@import './sass/components/modals';
 @import './sass/components/card';
 
 //components calculator
@@ -55,13 +54,17 @@
 @import './sass/components/landing/comment-card';
 @import './sass/components/landing/footer';
 
+//components CardTodo
+@import './sass//components/cardTodo';
+
 //views
 @import './sass/views/articles-page';
 @import './sass/views/checkingAuthView';
-@import './sass/views/course-page';
 @import './sass/views/profile-page';
 @import './sass/views/home';
 @import './sass/views/landing';
+@import './sass/views/todoPage';
+@import './sass/views/dictionary';
 
 //helpers
 @import './sass/utilities/helpers';

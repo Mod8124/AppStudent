@@ -57,11 +57,14 @@ export const LoginPage = () => {
       <div className='auth__wrapper'>
         <div className='welcome '>
           <div className='welcome__wrapper'>
+            <div className='welcome__logo'>
+              <img src='/assets/logo/logo.png' alt='logo' className='welcome__LogoImg' />
+            </div>
             <picture className='welcome__picture'>
               <img src='/assets/welcome.svg' alt='welcome svg' className='welcome__img' />
             </picture>
             <h2 className='welcome__title'>¡BIENVENIDO DE NUEVO!</h2>
-            <p className='welcome__paragraph'>Sé lo mejor de ti mismo</p>
+            <p className='welcome__paragraph'>Sé la mejor versión de ti mismo.</p>
           </div>
         </div>
         <div className='auth__form'>
@@ -125,7 +128,7 @@ export const LoginPage = () => {
             <div className='not-account'>
               <span className='not-account__title'>¿Aún no tienes cuenta?</span>
 
-              <Link to='/auth/register' className='not-account__link'>
+              <Link to='/register' className='not-account__link'>
                 Crear cuenta
               </Link>
             </div>
