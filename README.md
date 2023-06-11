@@ -20,7 +20,7 @@
 
 ### 📃Project Overview
 
-This Version is mine if you want to see the real version you can check the original [repo devathon-frontend](https://github.com/Kevin04C/app-estudiantes)
+This Version is mine if you want to see the real version you can check the original [app-estudiantes](https://github.com/Kevin04C/app-estudiantes)
 
 A web platform that consists to provide tools for students just as todo-list, dictionary to look for english words, pomodoro, calendar, calculator. All this in only place.
 
