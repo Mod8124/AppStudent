@@ -27,6 +27,8 @@ export const motivationQuote = () => {
     'Nunca permitas que tus miedos tomen el control de tu vida 😁',
     'El éxito no es la llave de la felicidad. La felicidad es la llave del éxito. Si amas lo que estás haciendo, serás exitoso ✨',
     'Insisitr, persistir, resistir y nunca desistir 🎉',
+    ' Los sueños comienzan cuando se cree en ellos 📚',
+    '¡Muéstrales de qué está hecho un Saiyan! 🙌',
   ];
 
   return quotes[Math.floor(Math.random() * quotes.length)];

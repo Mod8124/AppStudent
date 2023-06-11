@@ -5,6 +5,7 @@ import articleSlice from './articles/articleSlice';
 import { uiSlice } from './ui/uiSlice';
 import courseSlice from './courses/courseSlice';
 import { dictionarySlice } from './dictionary/dictionarySlice';
+import { todoSlice } from './todo/todoSlice';
 
 export const store = configureStore({
   reducer: {
@@ -14,5 +15,6 @@ export const store = configureStore({
     ui: uiSlice.reducer,
     courses: courseSlice.reducer,
     dictionary: dictionarySlice.reducer,
+    todo: todoSlice.reducer,
   },
 });

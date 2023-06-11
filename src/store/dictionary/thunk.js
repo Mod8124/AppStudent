@@ -19,6 +19,7 @@ export const submitGetResults = (keyword) => {
   };
 };
 
+// generate random words to show on homePage
 const getRandomWords = () => {
   let result = [];
 

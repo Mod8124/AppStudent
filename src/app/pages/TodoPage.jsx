@@ -6,33 +6,43 @@ import { Modal } from '../components/Modal';
 import { MdTitle } from 'react-icons/md';
 import { HiMenuAlt2 } from 'react-icons/hi';
 import { IoCheckmarkSharp } from 'react-icons/io5';
+import { useDispatch, useSelector } from 'react-redux';
+import { setTask } from '../../store/todo/todoSlice';
 
 export const TodoPage = () => {
+  const { tasks } = useSelector((state) => state.todo);
+  const dispatch = useDispatch();
   const [active, toggleActive] = useModal(false);
-  const [tasks, setTask] = useState([]);
   const [title, setTitle] = useState('');
   const [info, setInfo] = useState('');
   const [filter, setFilter] = useState('Todos');
+
   const filters = {
     Todos: (tasks) => tasks,
     Activos: (tasks) => tasks.filter((task) => !task.completed),
     Completados: (tasks) => tasks.filter((task) => task.completed),
   };
+
   const [showError, setShowError] = useState(false);
   const filteredTasks = filters[filter](tasks);
+
   const toggleModalAdd = () => {
     setShowError(false);
     toggleActive();
   };
+
   const changeFilter = (value) => {
     if (value.target.localName !== 'button') return;
     setFilter(value.target.innerHTML);
   };
+
   const options = {
     day: 'numeric',
     month: 'long',
     year: 'numeric',
   };
+
+  // add task to todo
   const addTask = () => {
     if (title.length === 0) {
       setShowError(true);
@@ -42,11 +52,11 @@ export const TodoPage = () => {
     }
     const newTask = {
       title,
-      completed: Math.random() < 0.5,
+      completed: false,
       description: info,
       date: new Date().toLocaleDateString('es-ES', options),
     };
-    setTask((prevArray) => [...prevArray, newTask]);
+    dispatch(setTask(newTask));
     setTitle('');
     setInfo('');
   };
@@ -79,7 +89,7 @@ export const TodoPage = () => {
       <article className='todoPage__content'>
         <div className='todoPage__cards'>
           {filteredTasks &&
-            filteredTasks.map((task, index) => <CardTodo key={index} task={task} />)}
+            filteredTasks.map((task, index) => <CardTodo key={index} task={task} index={index} />)}
         </div>
 
         <div className='todoPage__info'>

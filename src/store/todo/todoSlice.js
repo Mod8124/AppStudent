@@ -1,20 +1,36 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+const tasksHistory =
+  localStorage.getItem('tasksHistory') !== null
+    ? JSON.parse(localStorage.getItem('tasksHistory'))
+    : [];
+
 const base = {
-  tasks: [],
+  tasks: tasksHistory,
 };
 
 export const todoSlice = createSlice({
   name: 'todoSlice',
   initialState: base,
   reducers: {
-    addTask(state, action) {
-      state.tasks.push(action);
+    setTask(state, { payload }) {
+      state.tasks.push(payload);
+
+      // save on the local storage
+      localStorage.setItem('tasksHistory', JSON.stringify(state.tasks));
     },
-    removeTask(state, payload) {
-      state.tasks = payload;
+    setCompleted(state, { payload }) {
+      const index = payload;
+      state.tasks[index].completed = !state.tasks[index].completed;
+      localStorage.setItem('tasksHistory', JSON.stringify(state.tasks));
+    },
+    removeTask(state, { payload }) {
+      const index = payload;
+      state.tasks.splice(index, 1);
+
+      localStorage.setItem('searchHistory', JSON.stringify(state.searchHistory));
     },
   },
 });
 
-export const { addTask } = todoSlice.actions;
+export const { setTask, removeTask, setCompleted } = todoSlice.actions;

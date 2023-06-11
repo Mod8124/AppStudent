@@ -88,3 +88,18 @@
     flex: 1 0 100px;
   }
 }
+
+// word task session
+.word__todo {
+  .cardTodo {
+    column-gap: 0.4em;
+    border-left: 3px solid transparent;
+    svg {
+      opacity: 1;
+      fill: $paragraph;
+    }
+  }
+}
+.todoPage__cards--word {
+  margin-top: 0.8em;
+}
