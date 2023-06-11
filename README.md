@@ -2,12 +2,14 @@
 
 <h3>AppStudent</h3>
 
-> <div align="center">
->  ~
-> <a href="https://github.com/Mod8124/AppStudent/issues">Bug report</a>
-> ·
-> <a href="">Explore Demo</a>
+> ~
 >
+> <a href="https://github.com/Mod8124/AppStudent/issues">Bug report</a>
+> *
+> <a href="">Explore Demo</a>
+> *
+> <a href="https://github.com/Mod8124/AppStudent/blob/main/README_SP.md">Docs in spanish</a>
+> 
 > <p>A platform that provides tools for students as pomodoro, todolist, calculator, calendar, dictionary, and search words on wiki</p>
 > <img src="https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB">
 > <img src="https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white">
@@ -15,17 +17,6 @@
 > <br/>
 > ~
 > </div>
-
-<div align="right">
- <table>
- <tr>
-  <td>
-   <ahref="https://github.com/Mod8124/AppStudent/blob/main/README_SP.md"> Spanish </ahref=>
-   </td>
- </tr>
- </table>
- </div>
-</div>
 
 ### 📃Project Overview
 
