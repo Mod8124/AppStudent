@@ -3,7 +3,6 @@
   column-gap: 1.2rem;
   row-gap: 2em;
   width: 100%;
-  flex-wrap: wrap;
   flex-direction: column;
 }
 .welcomeCard {
@@ -28,6 +27,7 @@
     border-radius: 10px;
     background-color: $background;
     padding: 20px;
+    min-width: 240px;
     justify-content: center;
     row-gap: 0.8em;
     display: flex;
@@ -91,6 +91,7 @@
 
 // word task session
 .word__todo {
+  min-width: 260px;
   .cardTodo {
     column-gap: 0.4em;
     border-left: 3px solid transparent;

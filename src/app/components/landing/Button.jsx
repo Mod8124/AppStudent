@@ -8,7 +8,7 @@ export const Button = ({ children, type, href }) => {
   const buttonClass = BUTTONS[type] ?? BUTTONS.primary;
   return (
     <Link to={href} className={`landing-button ${buttonClass}`}>
-      <a>{children}</a>
+      {children}
     </Link>
   );
 };
