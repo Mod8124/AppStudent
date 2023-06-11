@@ -5,10 +5,11 @@
 > ~
 >
 > <a href="https://github.com/Mod8124/AppStudent/issues">Bug report</a>
->
-> - <a href="https://app-student.vercel.app">Explore Demo</a>
-> - <a href="https://github.com/Mod8124/AppStudent/blob/main/README_SP.md">Docs in spanish</a>
->
+> *
+> <a href="https://app-student.vercel.app/">Explore Demo</a>
+> *
+> <a href="https://github.com/Mod8124/AppStudent/blob/main/README_SP.md">Docs in spanish</a>
+> 
 > <p>A platform that provides tools for students as pomodoro, todolist, calculator, calendar, dictionary, and search words on wiki</p>
 > <img src="https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB">
 > <img src="https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white">
@@ -16,6 +17,7 @@
 > <br/>
 > ~
 > </div>
+
 
 ### 📃Project Overview
 
