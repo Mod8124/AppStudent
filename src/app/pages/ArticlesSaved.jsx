@@ -8,7 +8,7 @@ const ArticlesSaved = () => {
   return (
     <div className='articles'>
       {savedArts.length === 0 ? (
-        <NoArticlesFound />
+        <NoArticlesFound favorite />
       ) : (
         <section className='articles__list-results'>
           {savedArts?.map((art) => (
