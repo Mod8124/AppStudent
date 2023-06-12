@@ -5,7 +5,7 @@ import { useModal } from '../../hooks/useModal';
 import { Modal } from '../components/Modal';
 import { MdTitle } from 'react-icons/md';
 import { HiMenuAlt2 } from 'react-icons/hi';
-import { IoCheckmarkSharp } from 'react-icons/io5';
+import { IoCheckmarkSharp, IoCloseSharp } from 'react-icons/io5';
 import { useDispatch, useSelector } from 'react-redux';
 import { setTask } from '../../store/todo/todoSlice';
 
@@ -100,6 +100,7 @@ export const TodoPage = () => {
             <Modal toggleActiveModal={toggleActive}>
               <article className='todoPage__modal'>
                 <div className='todoPage__newTaskContainer'>
+                  <IoCloseSharp onClick={toggleModalAdd} className='todoPage__newTask--icon' />
                   <button className='todoPage__newTask'>Nueva tarea</button>
                   <IoCheckmarkSharp onClick={addTask} className='todoPage__newTask--icon' />
                 </div>

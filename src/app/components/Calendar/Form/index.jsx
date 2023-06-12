@@ -3,14 +3,7 @@ import { Toggle } from './Toggle';
 import { Input } from './Input';
 import PropTypes from 'prop-types';
 
-export const Form = ({
-  toggleForm,
-  form,
-  handleForm,
-  handleReminder,
-  edit,
-  title,
-}) => {
+export const Form = ({ toggleForm, form, handleForm, handleReminder, edit, title }) => {
   return (
     <article className='calendar-form'>
       <div className='calendar-form-close'>
@@ -38,17 +31,13 @@ export const Form = ({
       <Input
         type='date'
         name='date'
-        value={`${form.date.getFullYear()}-${
-          form.date.getMonth() + 1
-        }-${form.date.getDate()}`}
+        value={`${form.date.getFullYear()}-${String(form.date.getMonth() + 1).padStart(
+          2,
+          '0',
+        )}-${String(form.date.getDate()).padStart(2, '0')}`}
         handleForm={handleForm}
       />
-      <Toggle
-        text='Notificación'
-        name='noti'
-        value={form.noti}
-        handleToggle={handleForm}
-      />
+      <Toggle text='Notificación' name='noti' value={form.noti} handleToggle={handleForm} />
     </article>
   );
 };
