@@ -9,7 +9,7 @@ export const Principal = () => {
     const delay = 100; // Delay in milliseconds (adjust as needed)
 
     const timer = setTimeout(() => {
-      toast('Versión modificada de este projecto, enlace al original abajo', {
+      toast('Versión modificada de este proyecto, enlace al original abajo', {
         icon: '🚧',
         duration: 4000,
         position: 'top-center',
