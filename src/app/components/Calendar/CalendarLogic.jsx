@@ -5,7 +5,7 @@ const init = () => {
   const rediminders = JSON.parse(localStorage.getItem('reminders'));
   if (rediminders) {
     return rediminders.map((reminder) => ({
-      ...rediminders,
+      ...reminder,
       date: new Date(reminder.date),
     }));
   }
@@ -47,12 +47,7 @@ export const CalendarLogic = () => {
     const setDate = key === 'date' ? new Date(`${value}T00:00`) : null;
     setForm((prev) => ({
       ...prev,
-      [key]:
-        key === 'alarm' || key === 'noti'
-          ? !prev[key]
-          : key === 'date'
-          ? setDate
-          : value,
+      [key]: key === 'alarm' || key === 'noti' ? !prev[key] : key === 'date' ? setDate : value,
     }));
   };
 
@@ -61,10 +56,7 @@ export const CalendarLogic = () => {
 
     switch (action) {
       case 'delete':
-        setReminders([
-          ...reminders.slice(0, index),
-          ...reminders.slice(index + 1),
-        ]);
+        setReminders([...reminders.slice(0, index), ...reminders.slice(index + 1)]);
         break;
 
       case 'edit':
@@ -94,14 +86,11 @@ export const CalendarLogic = () => {
     const currentDate = date.getTime();
 
     if (saveDate === currentDate && reminder.noti) {
-      toast(
-        `Hoy es ${reminder.title === '' ? '(Sin título)' : reminder.title}`,
-        {
-          icon: '⏰',
-          position: 'top-right',
-          duration: 5700,
-        },
-      );
+      toast(`Hoy es ${reminder.title === '' ? '(Sin título)' : reminder.title}`, {
+        icon: '⏰',
+        position: 'top-right',
+        duration: 5700,
+      });
       toast('¡RECUERDA!', {
         icon: '👀',
         position: 'top-right',
