@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { getSearch } from '../../store/search/thunks';
-import { NoArticlesFound } from '../components/Articles/NoArticlesFound';
 import ArticlesView from '../components/Articles/ArticlesView';
 import queryString from 'query-string';
 
@@ -14,7 +13,6 @@ const ArticlesPage = () => {
   const { q } = queryString.parse(search);
 
   useEffect(() => {
-    console.log(q);
     dispatch(getSearch(q || keyword, lang));
   }, [q, lang]);
 
@@ -24,13 +22,13 @@ const ArticlesPage = () => {
 
   return (
     <div className='articles'>
-      {!q && !keyword ? (
-        <NoArticlesFound />
-      ) : (
-        (q || keyword) && (
-          <ArticlesView keyword={q} lang={lang} language={handleLanguage} articles={articles} />
-        )
-      )}
+      <ArticlesView
+        keyword={q}
+        keyQ={keyword}
+        lang={lang}
+        language={handleLanguage}
+        articles={articles}
+      />
     </div>
   );
 };
