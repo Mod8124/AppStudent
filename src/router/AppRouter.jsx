@@ -29,7 +29,7 @@ export const AppRouter = () => {
           }
         />
         <Route
-          path='app/*'
+          path='/app/*'
           element={
             <PrivateRoutes>
               <AppRoutes />
