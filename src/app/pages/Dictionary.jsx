@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { submitGetResults } from '../../store/dictionary/thunk';
 import { useDispatch, useSelector } from 'react-redux';
+import { Helmet } from 'react-helmet';
 
 export const DictionaryPage = () => {
   const [key, setKey] = useState('');
@@ -18,6 +19,7 @@ export const DictionaryPage = () => {
   };
   return (
     <section className='dictionary'>
+      <Helmet title='AppStudent - Diccionario' />
       <h1 className='dictionary__title'>Ingles diccionario</h1>
 
       <p className='dictionary__para'>

@@ -8,6 +8,7 @@ import { HiMenuAlt2 } from 'react-icons/hi';
 import { IoCheckmarkSharp, IoCloseSharp } from 'react-icons/io5';
 import { useDispatch, useSelector } from 'react-redux';
 import { setTask } from '../../store/todo/todoSlice';
+import { Helmet } from 'react-helmet';
 
 export const TodoPage = () => {
   const { tasks } = useSelector((state) => state.todo);
@@ -62,6 +63,7 @@ export const TodoPage = () => {
   };
   return (
     <section className='todoPage'>
+      <Helmet title='AppStudent - Tareas' />
       <h1 className='todoPage__title'>Tareas</h1>
 
       <article className='todoPage__menu' onClick={changeFilter}>

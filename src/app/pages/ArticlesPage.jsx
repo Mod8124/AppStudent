@@ -4,6 +4,7 @@ import { useLocation } from 'react-router-dom';
 import { getSearch } from '../../store/search/thunks';
 import ArticlesView from '../components/Articles/ArticlesView';
 import queryString from 'query-string';
+import { Helmet } from 'react-helmet';
 
 const ArticlesPage = () => {
   const [lang, setLang] = useState('es');
@@ -22,6 +23,7 @@ const ArticlesPage = () => {
 
   return (
     <div className='articles'>
+      <Helmet title='AppStudent - Buscar' />
       <ArticlesView
         keyword={q}
         keyQ={keyword}
