@@ -102,7 +102,20 @@
   margin-top: 0.8em;
 }
 
-// word
+@keyframes pulse {
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.cardSkeleton {
+  width: 100%;
+  min-height: 210px;
+  background-color: $background;
+  margin-top: 0.8em;
+  border-radius: 10px;
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
 
 @media screen and (min-screen: 600px) {
   .dictionary {

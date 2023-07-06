@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { submitGetHomeResults } from '../../../store/dictionary/thunk';
 import { Card } from '../Dictionary/Card';
 import { MiniCard } from '../Todo/MiniCard';
+import { CardSkeleton } from '../Dictionary/CardSkeleton';
 
 export const Word = () => {
   const dispatch = useDispatch();
@@ -17,6 +18,12 @@ export const Word = () => {
     <div className='word'>
       <article className='word__word'>
         <h5>Vocabulario de ingles que talvez no conozcas</h5>
+        {!isLoading && homeResults.length === 0 && (
+          <div>
+            <CardSkeleton />
+            <CardSkeleton />
+          </div>
+        )}
         {!isLoading &&
           homeResults.length > 0 &&
           homeResults.map((result, index) => (
