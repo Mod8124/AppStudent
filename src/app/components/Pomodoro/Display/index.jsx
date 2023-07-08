@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
 
 export const Display = ({ secondsLeft, toggle, active, format, mode }) => {
+  const { t } = useTranslation('common');
   return (
     <div className='pomodoro__display'>
       <div
@@ -11,11 +13,8 @@ export const Display = ({ secondsLeft, toggle, active, format, mode }) => {
         }
       >
         <p className='pomodoro__display-time'>{format(secondsLeft, 0)}</p>
-        <button
-          className='pomodoro__display-button'
-          onClick={() => toggle('active')}
-        >
-          {active ? 'PARAR' : 'EMPEZAR'}
+        <button className='pomodoro__display-button' onClick={() => toggle('active')}>
+          {active ? t('backpack.pomodoro.end') : t('backpack.pomodoro.start')}
         </button>
       </div>
     </div>

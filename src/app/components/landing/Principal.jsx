@@ -3,13 +3,15 @@ import { Header } from '../landing/Header';
 import { Button } from './Button';
 import { useEffect } from 'react';
 import { toast } from 'react-hot-toast';
+import { useTranslation } from 'react-i18next';
 
 export const Principal = () => {
+  const { t } = useTranslation('common');
   useEffect(() => {
     const delay = 100; // Delay in milliseconds (adjust as needed)
 
     const timer = setTimeout(() => {
-      toast('Versión modificada de este proyecto, enlace al original abajo', {
+      toast(`${t('landing.toast')}`, {
         icon: '🚧',
         duration: 4000,
         position: 'top-center',
@@ -24,12 +26,8 @@ export const Principal = () => {
       <div className='principal wrapper'>
         <div className='principal__texts'>
           <h2 className='principal__title'>AppStudent</h2>
-          <p className='principal__paragraph'>
-            Mantén tus tareas organizadas y completas con nuestra aplicación revolucionaria! Con
-            nuestra aplicación, puedes crear listas de tareas personalizadas, establecer
-            recordatorios, priorizar tareas y mucho más.{' '}
-          </p>
-          <Button href='/app'>EMPEZAR A EXPLORAR</Button>
+          <p className='principal__paragraph'>{t('landing.hero.para')}</p>
+          <Button href='/app'>{t('landing.hero.btn')}</Button>
         </div>
         <picture className='principal__illustration'>
           <img src='/assets/svgs/principal_two.svg' alt='app students' />

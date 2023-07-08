@@ -16,6 +16,8 @@
     background-color: $background;
     border-radius: 6px;
     color: $paragraph;
+    min-width: 200px;
+    text-align: center;
   }
 
   &-wrapper {
@@ -30,6 +32,7 @@
     background-color: transparent;
     border: 1px solid $paragraph;
     padding: 3%;
+    width: 50%;
     cursor: pointer;
     font-size: 0.9em;
   }

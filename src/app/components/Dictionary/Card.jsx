@@ -1,9 +1,11 @@
 import { GiSpeaker } from 'react-icons/gi';
 import { wordsToSpanish } from '../../../utils/RandomWords';
+import { useTranslation } from 'react-i18next';
 
 let AudioP = null;
 
 export const Card = ({ result, home }) => {
+  const { t } = useTranslation('common');
   const word = result;
 
   const findPronunciation = () => {
@@ -45,7 +47,7 @@ export const Card = ({ result, home }) => {
         <GiSpeaker className='cardDictionary__speaker' onClick={start} />
         <p className='cardDictionary__pronunciation'>{findPronunciation()}</p>
       </div>
-      <h4 className='cardDictionary__titleMeaning'>Significado</h4>
+      <h4 className='cardDictionary__titleMeaning'>{t('dictionarypage.meaning')}</h4>
       {word.meanings.map((meaning, index) => {
         if (index > 1) return;
         return (

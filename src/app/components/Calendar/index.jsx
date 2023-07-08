@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { Form } from './Form';
 import { Schedule } from './Schedule';
 import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
 
 const Calendar = ({
   view,
@@ -20,21 +21,19 @@ const Calendar = ({
   //this logic is right here because depends on react-calendar
   const [current, setCurrent] = useState(new Date());
 
+  const { t, i18n } = useTranslation('common');
+
+  const lng = i18n.language;
+
   const handletitleClassName = (view) => {
     current.setHours(0, 0, 0, 0);
-    if (current.getTime() === view.date.getTime() && view.view === 'month')
-      return 'current-day';
+    if (current.getTime() === view.date.getTime() && view.view === 'month') return 'current-day';
   };
 
   const handleTitleContent = (activeStartDate) => {
     return reminders.map((reminder, index) => {
       if (reminder.date.getTime() == activeStartDate.date.getTime()) {
-        return (
-          <span
-            key={reminder.title + 'span' + index}
-            className='current-title'
-          ></span>
-        );
+        return <span key={reminder.title + 'span' + index} className='current-title'></span>;
       }
     });
   };
@@ -53,7 +52,7 @@ const Calendar = ({
             prev2Label={null}
             next2Label={null}
             minDetail={'decade'}
-            locale='es'
+            locale={lng}
             tileClassName={handletitleClassName}
             tileContent={handleTitleContent}
             value={current}
@@ -62,7 +61,7 @@ const Calendar = ({
             <Form
               handleForm={handleForm}
               form={form}
-              title='Nuevo Evento'
+              title={t('backpack.calendar.form.new')}
               handleReminder={handleReminder}
               toggleForm={toggleForm}
             />

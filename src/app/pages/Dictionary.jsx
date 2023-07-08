@@ -6,26 +6,25 @@ import { toast } from 'react-hot-toast';
 import { submitGetResults } from '../../store/dictionary/thunk';
 import { useDispatch, useSelector } from 'react-redux';
 import { Helmet } from 'react-helmet';
+import { useTranslation } from 'react-i18next';
 
 export const DictionaryPage = () => {
   const [key, setKey] = useState('');
   const dispatch = useDispatch();
   const { isLoading, result } = useSelector((state) => state.dictionary);
+  const { t } = useTranslation('common');
 
   const onSubmit = (event) => {
     event.preventDefault();
-    if (key.length === 0) toast.error('No se puede realizar la busqueda');
+    if (key.length === 0) toast.error(t('dictionarypage.empty'));
     dispatch(submitGetResults(key));
   };
   return (
     <section className='dictionary'>
-      <Helmet title='AppStudent - Diccionario' />
-      <h1 className='dictionary__title'>Ingles diccionario</h1>
+      <Helmet title='AppStudent - Dictionary' />
+      <h1 className='dictionary__title'>{t('dictionarypage.title')}</h1>
 
-      <p className='dictionary__para'>
-        Sabemos lo importante que es el inglés en estos días, esta sesión es para buscar palabras en
-        inglés, ve su significado, y como se pronuncia.
-      </p>
+      <p className='dictionary__para'>{t('dictionarypage.subTitle')}</p>
 
       <form onSubmit={onSubmit} className='dictionary__container'>
         <input
@@ -33,18 +32,16 @@ export const DictionaryPage = () => {
           autoFocus
           type='text'
           onChange={(event) => setKey(event.target.value)}
-          placeholder='Busca la palabra en inglés'
+          placeholder={t('dictionarypage.search')}
         />
         <GiArchiveResearch onClick={onSubmit} className='dictionary__svg' />
       </form>
       {isLoading && (
         <div>
-          <AiOutlineSearch /> <h3>Buscandoo...</h3>
+          <AiOutlineSearch /> <h3>{t('dictionarypage.searching')}</h3>
         </div>
       )}
       {!isLoading && result.length > 0 && <Card result={result[0]} />}
-      {/* 
-      <Card /> */}
     </section>
   );
 };

@@ -1,9 +1,11 @@
 import { IoCloseSharp, IoCheckmarkSharp } from 'react-icons/io5';
+import { useTranslation } from 'react-i18next';
 import { Toggle } from './Toggle';
 import { Input } from './Input';
 import PropTypes from 'prop-types';
 
 export const Form = ({ toggleForm, form, handleForm, handleReminder, edit, title }) => {
+  const { t } = useTranslation('common');
   return (
     <article className='calendar-form'>
       <div className='calendar-form-close'>
@@ -16,14 +18,14 @@ export const Form = ({ toggleForm, form, handleForm, handleReminder, edit, title
       </div>
       <Input
         type='text'
-        placeholder='Título'
+        placeholder={t('backpack.calendar.form.title')}
         name='title'
         handleForm={handleForm}
         value={form.title}
       />
       <Input
         type='text'
-        placeholder='Descripción'
+        placeholder={t('backpack.calendar.form.description')}
         name='description'
         handleForm={handleForm}
         value={form.description}
@@ -37,7 +39,12 @@ export const Form = ({ toggleForm, form, handleForm, handleReminder, edit, title
         )}-${String(form.date.getDate()).padStart(2, '0')}`}
         handleForm={handleForm}
       />
-      <Toggle text='Notificación' name='noti' value={form.noti} handleToggle={handleForm} />
+      <Toggle
+        text={t('backpack.calendar.form.notification')}
+        name='noti'
+        value={form.noti}
+        handleToggle={handleForm}
+      />
     </article>
   );
 };

@@ -2,9 +2,11 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { toogleMenu } from '../../../store/ui/uiSlice';
 import { Button } from './Button';
+import { useTranslation } from 'react-i18next';
 
 export const MenuMobile = ({ linkClass }) => {
   const { showMenu } = useSelector((state) => state.ui);
+  const { t } = useTranslation('common');
 
   const dispatch = useDispatch();
   const handleRemoveMenu = () => {
@@ -37,22 +39,19 @@ export const MenuMobile = ({ linkClass }) => {
           </svg>
         </li>
         <li className={linkClass}>
-          <a href='#'>¿QUÉ ES?</a>
+          <a href='#'>{t(`landing.nav.links.about`)}</a>
         </li>
         <li className={linkClass}>
-          <a href='#'>¿QUÉ OFRECEMOS?</a>
+          <a href='#'>{t(`landing.nav.links.solution`)}</a>
         </li>
         <li className={linkClass}>
-          <a href='#'>COMENTARIOS</a>
-        </li>
-        <li className={linkClass}>
-          <Button href='/auth/login' type='primary'>
-            INGRESAR
+          <Button href='#' type='primary'>
+            {t(`landing.nav.links.log`)}
           </Button>
         </li>
         <li className={linkClass}>
-          <Button href='/auth/register' type='secondary'>
-            REGISTRARME
+          <Button href='/app' type='secondary'>
+            {t(`landing.nav.links.explore`)}
           </Button>
         </li>
       </ul>

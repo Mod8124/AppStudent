@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import toast from 'react-hot-toast';
+import { useTranslation } from 'react-i18next';
 
 export const PomodoroLogic = () => {
   const DEFAULT_TIMES = [25, 5, 15];
@@ -12,11 +13,11 @@ export const PomodoroLogic = () => {
     config: false,
   });
 
+  const { t } = useTranslation('common');
+
   const SECONDS = 60;
 
-  const [secondsLeft, setSecondsLeft] = useState(
-    countdown.initialCountdown[0] * SECONDS,
-  );
+  const [secondsLeft, setSecondsLeft] = useState(countdown.initialCountdown[0] * SECONDS);
 
   const handleSecondLeft = () => {
     setSecondsLeft(() =>
@@ -60,21 +61,24 @@ export const PomodoroLogic = () => {
   };
 
   const format = (secondsLeft, minus) => {
-    return `${
-      Math.floor(Number((secondsLeft - minus) / SECONDS)) < 10 ? '0' : ''
-    }${Math.floor((secondsLeft - minus) / SECONDS)}:${
-      (secondsLeft - minus) % SECONDS < 10 ? '0' : ''
-    }${(secondsLeft - minus) % SECONDS}`;
+    return `${Math.floor(Number((secondsLeft - minus) / SECONDS)) < 10 ? '0' : ''}${Math.floor(
+      (secondsLeft - minus) / SECONDS,
+    )}:${(secondsLeft - minus) % SECONDS < 10 ? '0' : ''}${(secondsLeft - minus) % SECONDS}`;
   };
 
   const notify = () => {
-    toast.success(`${countdown.timerMode.toLowerCase()} ha finalizado`, {
-      id: 'notification',
-      position: 'top-right',
-      duration: 3500,
-    });
+    toast.success(
+      `${countdown.timerMode.toLowerCase()} ${t('backpack.pomodoro.notification.end')}`,
+      {
+        id: 'notification',
+        position: 'top-right',
+        duration: 3500,
+      },
+    );
     toast(
-      countdown.timerMode === 'POMODORO' ? 'Felicitaciones' : 'Enhorabuena',
+      countdown.timerMode === 'POMODORO'
+        ? `${t('backpack.pomodoro.notification.congra')}`
+        : `${t('backpack.pomodoro.notification.congraTwo')}`,
       {
         icon: countdown.timerMode === 'POMODORO' ? '🔥' : '🌟',
         position: 'top-right',
@@ -89,11 +93,15 @@ export const PomodoroLogic = () => {
         setSecondsLeft((secondsLeft) => secondsLeft - 1);
         document.title =
           format(secondsLeft, 1) +
-          ` Tiempo de ${countdown.timerMode.toLowerCase()}`;
+          ` ${t('backpack.pomodoro.notification.current')} ${t(
+            `backpack.pomodoro.${countdown.timerMode}`,
+          ).toLowerCase()}`;
       }, 1000);
 
       if (secondsLeft === 0) {
-        document.title = `AppStudent | Finalizado ${countdown.timerMode.toLowerCase()}`;
+        document.title = `AppStudent | ${t(
+          'backpack.pomodoro.notification.timer',
+        )} ${countdown.timerMode.toLowerCase()}`;
         if (countdown.notification) notify();
         clearInterval(interval);
       }

@@ -1,14 +1,16 @@
 import { IoIosArrowBack } from 'react-icons/io';
 import PropTypes from 'prop-types';
 import { Toggle } from './Toggle';
+import { useTranslation } from 'react-i18next';
 
 export const Config = ({ countdown, toggle, changeTime }) => {
+  const { t } = useTranslation('common');
   return (
     <div className='pomodoro__config'>
       <div className='pomodoro__config-back' onClick={() => toggle('config')}>
         <IoIosArrowBack />
       </div>
-      <h3 className='pomodoro__config-title'>Nivel de Concentración</h3>
+      <h3 className='pomodoro__config-title'>{t('backpack.pomodoro.config.title')}</h3>
 
       <div className='pomodoro__config-input'>
         <div className='pomodoro__config-input-min'>
@@ -31,7 +33,7 @@ export const Config = ({ countdown, toggle, changeTime }) => {
       <div className='pomodoro__config-input'>
         <div className='pomodoro__config-input-min'>
           <p>{countdown.initialCountdown[1]} min</p>
-          <p>Descanso</p>
+          <p>{t('backpack.pomodoro.config.break')}</p>
         </div>
         <input
           className='pomodoro__config-input-range'
@@ -49,7 +51,7 @@ export const Config = ({ countdown, toggle, changeTime }) => {
       <div className='pomodoro__config-input'>
         <div className='pomodoro__config-input-min'>
           <p>{countdown.initialCountdown[2]} min</p>
-          <p>Descanso-Largo</p>
+          <p>{t('backpack.pomodoro.config.longBreak')}</p>
         </div>
         <input
           className='pomodoro__config-input-range'
@@ -65,13 +67,13 @@ export const Config = ({ countdown, toggle, changeTime }) => {
       </div>
 
       <Toggle
-        text='Mostrar Notificacion'
+        text={t('backpack.pomodoro.config.notification')}
         value={countdown.notification}
         toggle={toggle}
         action='notification'
       />
       <Toggle
-        text='Alarma al Completar'
+        text={t('backpack.pomodoro.config.alarm')}
         value={countdown.alarm}
         toggle={toggle}
         action='alarm'
