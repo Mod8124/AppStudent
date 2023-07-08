@@ -54,7 +54,9 @@ export const Schedule = ({
             </div>
           </div>
         ))}
-      {reminders.length === 0 && <h2 className='calendar-schedule-none'>No tienes eventos</h2>}
+      {reminders.length === 0 && (
+        <h2 className='calendar-schedule-none'>{t('backpack.calendar.empty')}</h2>
+      )}
       {activeForm && (
         <Form
           toggleForm={toggleForm}

@@ -37,6 +37,7 @@ export const backpackText = {
         title: 'Title',
         description: 'Description',
       },
+      empty: "You don't have any events",
       confirm: {
         title: 'Delete event',
         cancel: 'Cancel',
@@ -82,6 +83,7 @@ export const backpackText = {
         title: 'Título',
         description: 'Descripción',
       },
+      empty: 'No tienes eventos',
       confirm: {
         title: '¿Eliminar este evento?',
         cancel: 'Cancelar',
