@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
 
 export const Button = ({ text, changeView, view }) => {
+  const { t } = useTranslation('common');
   return (
     <button
       className={
@@ -9,8 +11,9 @@ export const Button = ({ text, changeView, view }) => {
           : 'calendar-view-button calendar-view'
       }
       onClick={changeView}
+      data-key={text}
     >
-      {text}
+      {t(`backpack.calendar.${text}`)}
     </button>
   );
 };

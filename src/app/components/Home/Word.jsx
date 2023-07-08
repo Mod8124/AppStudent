@@ -4,11 +4,13 @@ import { submitGetHomeResults } from '../../../store/dictionary/thunk';
 import { Card } from '../Dictionary/Card';
 import { MiniCard } from '../Todo/MiniCard';
 import { CardSkeleton } from '../Dictionary/CardSkeleton';
+import { useTranslation } from 'react-i18next';
 
 export const Word = () => {
   const dispatch = useDispatch();
   const { homeResults, isLoading } = useSelector((state) => state.dictionary);
   const { tasks } = useSelector((state) => state.todo);
+  const { t } = useTranslation('common');
 
   useEffect(() => {
     dispatch(submitGetHomeResults());
@@ -17,7 +19,7 @@ export const Word = () => {
   return (
     <div className='word'>
       <article className='word__word'>
-        <h5>Vocabulario de ingles que talvez no conozcas</h5>
+        <h5>{t('homepage.word')}</h5>
         {!isLoading && homeResults.length === 0 && (
           <div>
             <CardSkeleton />
@@ -27,7 +29,7 @@ export const Word = () => {
         {!isLoading &&
           homeResults.length > 0 &&
           homeResults.map((result, index) => (
-            <div className='word__cards' key={result + index + 'home'}>
+            <div className='word__cards' key={'home' + 'card' + index}>
               <Card result={result} home />
             </div>
           ))}
@@ -36,7 +38,7 @@ export const Word = () => {
       <article className='word__todo'>
         {tasks.length > 0 && (
           <>
-            <h4>Tareas</h4>
+            <h4>{t('homepage.task')}</h4>
             <div className='todoPage__cards todoPage__cards--word'>
               {tasks.length > 0 &&
                 tasks.map((task, index) => (

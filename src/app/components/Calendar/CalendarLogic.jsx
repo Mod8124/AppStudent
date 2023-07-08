@@ -72,7 +72,7 @@ export const CalendarLogic = () => {
   };
 
   const changeView = (event) => {
-    const view = event.target.innerHTML;
+    const view = event.target.dataset.key;
     setActiveForm(false);
     setView(view);
   };

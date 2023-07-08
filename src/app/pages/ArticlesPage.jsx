@@ -23,7 +23,7 @@ const ArticlesPage = () => {
 
   return (
     <div className='articles'>
-      <Helmet title='AppStudent - Buscar' />
+      <Helmet title='AppStudent - Search' />
       <ArticlesView
         keyword={q}
         keyQ={keyword}

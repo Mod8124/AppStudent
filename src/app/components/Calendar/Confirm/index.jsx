@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
 
 export const Confirm = ({ text, close, handleReminder, index }) => {
+  const { t } = useTranslation('common');
   return (
     <article className='calendar-schedule-confirm'>
       <div className='calendar-schedule-confirm-alert'>
@@ -10,7 +12,7 @@ export const Confirm = ({ text, close, handleReminder, index }) => {
             className='calendar-schedule-confirm-button calendar-schedule-confirm-close'
             onClick={close}
           >
-            Cancelar
+            {t('backpack.calendar.confirm.cancel')}
           </button>
           <button
             className='calendar-schedule-confirm-button calendar-schedule-confirm-confirm'
@@ -19,7 +21,7 @@ export const Confirm = ({ text, close, handleReminder, index }) => {
               close();
             }}
           >
-            Confirmar
+            {t('backpack.calendar.confirm.confirm')}
           </button>
         </div>
       </div>

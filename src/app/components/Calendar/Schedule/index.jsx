@@ -5,6 +5,7 @@ import { Form } from '../Form';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { Confirm } from '../Confirm';
+import { useTranslation } from 'react-i18next';
 
 export const Schedule = ({
   reminders,
@@ -26,25 +27,21 @@ export const Schedule = ({
     setIndex(id);
     setConfrm(true);
   };
+  const { t } = useTranslation('common');
   return (
     <div className='calendar-schedule'>
       {reminders &&
         reminders.length > 0 &&
         reminders.map((reminder, index) => (
-          <div
-            className='calendar-schedule-wrapper'
-            key={reminder.title + index}
-          >
+          <div className='calendar-schedule-wrapper' key={reminder.title + index}>
             <h3 className='calendar-schedule-wrapper-title'>
               {reminder.title === '' ? '(Sin título)' : reminder.title}
             </h3>
             <h4 className='calendar-schedule-wrapper-subTitle'>
               {reminder.date.toLocaleDateString('es', options)}
             </h4>
-            <p className='calendar-schedule-wrapper-paragraph'>
-              {reminder.description}
-            </p>
-            <Toggle reminder={reminder.noti} text='Notificación' />
+            <p className='calendar-schedule-wrapper-paragraph'>{reminder.description}</p>
+            <Toggle reminder={reminder.noti} text={t('backpack.calendar.form.notification')} />
 
             <div className='calendar-schedule-wrapper-options'>
               <div onClick={() => toggleForm(reminder)}>
@@ -57,14 +54,12 @@ export const Schedule = ({
             </div>
           </div>
         ))}
-      {reminders.length === 0 && (
-        <h2 className='calendar-schedule-none'>No tienes eventos</h2>
-      )}
+      {reminders.length === 0 && <h2 className='calendar-schedule-none'>No tienes eventos</h2>}
       {activeForm && (
         <Form
           toggleForm={toggleForm}
           form={form}
-          title='Editar Evento'
+          title={t('backpack.calendar.form.edit')}
           handleReminder={handleReminder}
           handleForm={handleForm}
           edit
@@ -72,7 +67,7 @@ export const Schedule = ({
       )}
       {confirm && (
         <Confirm
-          text='¿Eliminar este evento?'
+          text={t('backpack.calendar.confirm.title')}
           index={index}
           handleReminder={handleReminder}
           close={() => setConfrm(false)}

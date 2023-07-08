@@ -3,10 +3,14 @@ import Profile from './Profile';
 import Searcher from './Searcher';
 import { useSelector } from 'react-redux';
 import { toast } from 'react-hot-toast';
+import { useTranslation } from 'react-i18next';
+
 const Header = () => {
   const { user } = useSelector((state) => state.auth);
+  const { t } = useTranslation('common');
+
   const handleClick = () => {
-    toast('Hola, estamos trabajando en esta funcionalidad!', {
+    toast(`${t('header.toast')}`, {
       icon: '🚧',
       duration: 4500,
       position: 'top-right',
@@ -26,11 +30,11 @@ const Header = () => {
         ) : (
           <article className='header__visit'>
             <button className='header__login' onClick={handleClick}>
-              Iniciar sesión
+              {t('header.logIn')}
             </button>{' '}
             /{' '}
             <button className='header__register' onClick={handleClick}>
-              Registrate
+              {t('header.register')}
             </button>
           </article>
         )}

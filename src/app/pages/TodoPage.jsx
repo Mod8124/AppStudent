@@ -9,6 +9,7 @@ import { IoCheckmarkSharp, IoCloseSharp } from 'react-icons/io5';
 import { useDispatch, useSelector } from 'react-redux';
 import { setTask } from '../../store/todo/todoSlice';
 import { Helmet } from 'react-helmet';
+import { useTranslation } from 'react-i18next';
 
 export const TodoPage = () => {
   const { tasks } = useSelector((state) => state.todo);
@@ -17,6 +18,7 @@ export const TodoPage = () => {
   const [title, setTitle] = useState('');
   const [info, setInfo] = useState('');
   const [filter, setFilter] = useState('Todos');
+  const { t } = useTranslation('common');
 
   const filters = {
     Todos: (tasks) => tasks,
@@ -34,7 +36,7 @@ export const TodoPage = () => {
 
   const changeFilter = (value) => {
     if (value.target.localName !== 'button') return;
-    setFilter(value.target.innerHTML);
+    setFilter(value.target.dataset.view);
   };
 
   const options = {
@@ -63,28 +65,31 @@ export const TodoPage = () => {
   };
   return (
     <section className='todoPage'>
-      <Helmet title='AppStudent - Tareas' />
-      <h1 className='todoPage__title'>Tareas</h1>
+      <Helmet title='AppStudent - Tasks' />
+      <h1 className='todoPage__title'>{t('taskpage.title')}</h1>
 
       <article className='todoPage__menu' onClick={changeFilter}>
         <button
+          data-view='Todos'
           className={filter === 'Todos' ? 'todoPage__btn todoPage__btn--active' : 'todoPage__btn'}
         >
-          Todos
+          {t('taskpage.all')}
         </button>
         <span className='todoPage__space'>|</span>
         <button
+          data-view='Activos'
           className={filter === 'Activos' ? 'todoPage__btn todoPage__btn--active' : 'todoPage__btn'}
         >
-          Activos
+          {t('taskpage.active')}
         </button>
         <span className='todoPage__space'>|</span>
         <button
+          data-view='Completados'
           className={
             filter === 'Completados' ? 'todoPage__btn todoPage__btn--active' : 'todoPage__btn'
           }
         >
-          Completados
+          {t('taskpage.completed')}
         </button>
       </article>
 
@@ -96,14 +101,14 @@ export const TodoPage = () => {
 
         <div className='todoPage__info'>
           <button className='todoPage__btnAdd' onClick={toggleModalAdd}>
-            <AiFillPlusCircle /> Añadir Tarea
+            <AiFillPlusCircle /> {t('taskpage.add')}
           </button>
           {active && (
             <Modal toggleActiveModal={toggleActive}>
               <article className='todoPage__modal'>
                 <div className='todoPage__newTaskContainer'>
                   <IoCloseSharp onClick={toggleModalAdd} className='todoPage__newTask--icon' />
-                  <button className='todoPage__newTask'>Nueva tarea</button>
+                  <button className='todoPage__newTask'>{t('taskpage.form.title')}</button>
                   <IoCheckmarkSharp onClick={addTask} className='todoPage__newTask--icon' />
                 </div>
                 <div className='todoPage__inputContainer'>
@@ -112,7 +117,7 @@ export const TodoPage = () => {
                     className='todoPage__input'
                     type='text'
                     value={title}
-                    placeholder='Título'
+                    placeholder={t('taskpage.form.titleTitle')}
                     onChange={(e) => {
                       setTitle(e.target.value);
                     }}
@@ -126,7 +131,7 @@ export const TodoPage = () => {
                     className='todoPage__input todoPage__input--description'
                     type='text'
                     value={info}
-                    placeholder='Description'
+                    placeholder={t('taskpage.form.description')}
                     onChange={(e) => setInfo(e.target.value)}
                   />
                 </div>
@@ -134,8 +139,12 @@ export const TodoPage = () => {
             </Modal>
           )}
           <p className='todoPage__total'>
-            <span>{filteredTasks.length}</span> Tareas{' '}
-            {filter === 'Todos' ? 'En Total' : filter === 'Activos' ? 'Activas' : 'Completadas'}
+            <span>{filteredTasks.length}</span> {t('taskpage.title')}{' '}
+            {filter === 'Todos'
+              ? t('taskpage.allTask')
+              : filter === 'Activos'
+              ? t('taskpage.active')
+              : t('taskpage.completed')}
           </p>
         </div>
       </article>

@@ -11,24 +11,16 @@ import { useModal } from '../../../hooks/useModal';
 import { useScrollDown } from '../../../hooks/useScrollDown';
 import { PomodoroLogic } from '../Pomodoro/PomodoroLogic';
 import { CalendarLogic } from '../Calendar/CalendarLogic';
+import { useTranslation } from 'react-i18next';
 
 const Backpack = () => {
   const scrollDirection = useScrollDown();
   const [calculatorActive, toggleCalculatorActive] = useModal(false);
   const [pomodoroActive, togglePomodoroActive] = useModal(false);
   const [calendarActive, toggleCalendarActive] = useModal(false);
-  const { changeMode, format, toggle, changeTime, secondsLeft, countdown } =
-    PomodoroLogic();
-  const {
-    reminders,
-    changeView,
-    view,
-    activeForm,
-    form,
-    toggleForm,
-    handleReminder,
-    handleForm,
-  } = CalendarLogic();
+  const { changeMode, format, toggle, changeTime, secondsLeft, countdown } = PomodoroLogic();
+  const { reminders, changeView, view, activeForm, form, toggleForm, handleReminder, handleForm } =
+    CalendarLogic();
 
   const refBackpackIcon = useRef('');
   const refBackpackItems = useRef('');
@@ -37,41 +29,29 @@ const Backpack = () => {
     refBackpackItems.current.classList.toggle('backpack__items--on');
   };
 
+  const { t } = useTranslation('common');
+
   return (
-    <div
-      className={`backpack ${
-        scrollDirection === 'down' ? 'backpack--down' : null
-      }`}
-    >
+    <div className={`backpack ${scrollDirection === 'down' ? 'backpack--down' : null}`}>
       <div className='backpack__content '>
-        <div
-          onClick={handleClick}
-          ref={refBackpackIcon}
-          className='backpack__icon as-btn-primary'
-        >
+        <div onClick={handleClick} ref={refBackpackIcon} className='backpack__icon as-btn-primary'>
           <GiLightBackpack />
         </div>
         <ul ref={refBackpackItems} className='backpack__items '>
-          <li
-            className='backpack__item backpack__item--clock'
-            onClick={togglePomodoroActive}
-          >
+          <li className='backpack__item backpack__item--clock' onClick={togglePomodoroActive}>
             <IoMdClock />
-            <span className='backpack__item-tooltip'>Pomodoro</span>
+            <span className='backpack__item-tooltip'>{t('backpack.pomodoro.title')}</span>
           </li>
-          <li
-            className='backpack__item backpack__item--calendar'
-            onClick={toggleCalendarActive}
-          >
+          <li className='backpack__item backpack__item--calendar' onClick={toggleCalendarActive}>
             <BiCalendar />
-            <span className='backpack__item-tooltip'>Calendario</span>
+            <span className='backpack__item-tooltip'>{t('backpack.calendar.title')}</span>
           </li>
           <li
             className='backpack__item backpack__item--calculator'
             onClick={toggleCalculatorActive}
           >
             <BiCalculator />
-            <span className='backpack__item-tooltip'>Calculadora</span>
+            <span className='backpack__item-tooltip'>{t('backpack.calculator.title')}</span>
           </li>
         </ul>
       </div>
@@ -106,10 +86,7 @@ const Backpack = () => {
           ></Calendar>
         </Modal>
       )}
-      <Notification
-        secondsLeft={secondsLeft}
-        countdown={countdown}
-      ></Notification>
+      <Notification secondsLeft={secondsLeft} countdown={countdown}></Notification>
     </div>
   );
 };
